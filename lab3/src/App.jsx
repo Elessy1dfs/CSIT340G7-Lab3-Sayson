@@ -4,16 +4,16 @@ const Header = (props) => {
 
 const Part = (props) => {
   return (
-    <p>{props.partName} - {props.unitCount} units</p>
+    <p>{props.part.code} {props.part.name} - {props.part.units} units</p>
   )
 }
 
 const Content = (props) => {
   return (
     <div>
-      <Part partName={props.partOne} unitCount={props.unitOne} />
-      <Part partName={props.partTwo} unitCount={props.unitTwo} />
-      <Part partName={props.partThree} unitCount={props.unitThree} />
+      <Part part={props.part1} />
+      <Part part={props.part2} />
+      <Part part={props.part3} />
     </div>
   )
 }
@@ -32,12 +32,10 @@ const Footer = (props) => {
 
 const App = () => {
   const courseName = 'CSIT340 - Industry Elective 1'
-  const partOne = 'IT317 Project Management'
-  const unitOne = 3
-  const partTwo = 'IT365 Data Analytics 1'
-  const unitTwo = 3
-  const partThree = 'CSIT327 Information Management 2'
-  const unitThree = 3
+  
+  const part1 = { code: 'IT317', name: 'Project Management', units: 3 }
+  const part2 = { code: 'IT365', name: 'Data Analytics 1', units: 3 }
+  const part3 = { code: 'CSIT327', name: 'Information Management 2', units: 3 }
 
   const myName = 'Eleonora Sayson'
   const myCourseCode = 'CSIT340'
@@ -46,12 +44,8 @@ const App = () => {
   return (  
     <div>
       <Header courseName={courseName} />
-      <Content 
-        partOne={partOne} unitOne={unitOne}
-        partTwo={partTwo} unitTwo={unitTwo}
-        partThree={partThree} unitThree={unitThree}
-      />
-      <Total totalUnits={unitOne + unitTwo + unitThree} />
+      <Content part1={part1} part2={part2} part3={part3} />
+      <Total totalUnits={part1.units + part2.units + part3.units} />
       <Footer fullName={myName} courseCode={myCourseCode} section={mySection} />
     </div>
   )
